@@ -1,5 +1,7 @@
 # Store-Front
 
+[github pages deployment](https://hasnaa38.github.io/store-front/)
+
 ## Phase 1
 
 For this phase, an e-Commerce storefront was created using React with Redux.
