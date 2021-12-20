@@ -17,7 +17,7 @@ function Products(props) {
                     <Box key={index} sx={{ width: 210, marginRight: 0.5, my: 5 }}>
                         {item ? (
                             <img
-                                style={{ width: 210, height: 118 }}
+                                style={{ width: 210, height: 320, objectFit:'cover' }}
                                 alt={item.name}
                                 src={item.image}
                             />
@@ -25,17 +25,18 @@ function Products(props) {
                             <Skeleton variant="rectangular" width={210} height={118} />
                         )}
                         {item ? (
-                            <Box sx={{ pr: 2 }}>
-                                <Typography gutterBottom variant="body2">
+                            <Box style={{ height: 200 }} sx={{ pr: 2 }} >
+                                <hr/>
+                                <Typography style={{ height: 40, fontWeight:'600', fontSize: 16 }} gutterBottom variant="body2">
                                     {item.name}
                                 </Typography>
-                                <Typography display="block" variant="caption" color="text.secondary">
+                                <Typography style={{ height: 50 }} display="block" variant="caption" color="text.secondary">
                                     {item.description}
                                 </Typography>
-                                <Typography variant="caption" color="text.secondary">
+                                <Typography style={{ height: 20 }} variant="caption" color="text.secondary">
                                     {`${item.price} JD • ${item.inventoryCount} in stock`}
                                 </Typography>
-                                <br/><br/>
+                                <br/><hr/>
                                 <Button sx={{ background: "#1B3A4B" }} variant="contained" size="small" onClick={()=>{dispatch(addToCart(item)); dispatch(decrementStock(item))}}>Add To Cart</Button>
                             </Box>
                         ) : (
