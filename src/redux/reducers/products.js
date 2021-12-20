@@ -1,6 +1,5 @@
 const faker = require('faker');
 
-
 const productsReducer = (state=[], action) => {
     switch (action.type) {
         case 'BUTTON1':
@@ -9,19 +8,19 @@ const productsReducer = (state=[], action) => {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }, {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }, {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }
             ]
@@ -31,19 +30,19 @@ const productsReducer = (state=[], action) => {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }, {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }, {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }
             ]
@@ -53,19 +52,19 @@ const productsReducer = (state=[], action) => {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }, {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }, {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }
             ]
@@ -75,24 +74,32 @@ const productsReducer = (state=[], action) => {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }, {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }, {
                     name: faker.commerce.productName(),
                     description: faker.commerce.productDescription(),
                     price: faker.commerce.price(),
-                    inventoryCount: faker.datatype.number(),
+                    inventoryCount: 38,
                     image: faker.image.nature()
                 }
             ]
+
+            case 'DECREMENT_STOCK':
+                return state.map(item => {
+                    if(item.name === action.payload.name){
+                        item.inventoryCount--;
+                    }
+                    return item;
+                });
         default:
-            return []
+            return state;
     }
 }
 

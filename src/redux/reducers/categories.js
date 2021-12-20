@@ -21,7 +21,7 @@ const categoriesReducer = (state = {}, action) => {
                 description: 'Science Books Zone'
             }
         default:
-            return {}
+            return state;
     }
 }
 
