@@ -1,12 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
+import Button from '@mui/material/Button';
+import { addToCart, decrementStock } from '../redux/actions/index';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Products(props) {
     const products = useSelector(state => state.products);
+    const dispatch = useDispatch();
     return (
         <div>
             <Grid container wrap="nowrap" justifyContent="space-evenly" alignItems="center">
@@ -32,6 +35,8 @@ function Products(props) {
                                 <Typography variant="caption" color="text.secondary">
                                     {`${item.price} JD • ${item.inventoryCount} in stock`}
                                 </Typography>
+                                <br/><br/>
+                                <Button sx={{ background: "#1B3A4B" }} variant="contained" size="small" onClick={()=>{dispatch(addToCart(item)); dispatch(decrementStock(item))}}>Add To Cart</Button>
                             </Box>
                         ) : (
                             <Box sx={{ pt: 0.5 }}>

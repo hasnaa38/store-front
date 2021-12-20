@@ -21,3 +21,40 @@ export const button4Action = () => {
         type: 'BUTTON4'
     }
 }
+
+// products actions:
+
+export const decrementStock = (item) => {
+    return {
+        type: 'DECREMENT_STOCK',
+        payload: item
+    }
+}
+
+// cart actions:
+
+export const addToCart = (item) => {
+    return {
+        type: 'ADD_TO_CART',
+        payload: item
+    }
+}
+
+export const removeFromCart = (item) => {
+    return {
+        type: 'REMOVE_FROM_CART',
+        payload: item
+    }
+}
+
+export const openCart = () => {
+    return {
+        type: 'OPEN_CART'
+    }
+}
+
+export const closeCart = () => {
+    return {
+        type: 'CLOSE_CART'
+    }
+}
