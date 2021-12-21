@@ -1,7 +1,19 @@
-const productsReducer = (state = [], action) => {
+const productsReducer = (state = {
+    allBooks: [],
+    categoryBooks: []
+}, action) => {
     switch (action.type) {
+        case 'INITIAL_GET':
+            return {
+                ...state,
+                allBooks: action.payload.result
+            };
         case 'GET':
-            return action.payload.result;
+            let result = state.allBooks.filter(item => item.category === action.payload);
+            return {
+                ...state,
+                categoryBooks: result
+            };
         case 'DECREMENT_STOCK':
             return state.map(item => {
                 if (item.name === action.payload.name) {

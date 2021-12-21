@@ -12,8 +12,8 @@ function Products() {
     const dispatch = useDispatch();
     return (
         <div>
-            <Grid container wrap="nowrap" justifyContent="space-evenly" alignItems="center">
-                {products.map((item, index) => {
+            <Grid container justifyContent="space-evenly" alignItems="center">
+                {products.categoryBooks.map((item, index) => {
                     return item.inventoryCount ? 
                     <Box key={index} sx={{ width: 210, marginRight: 0.5, my: 5 }}>
                         {item ? (

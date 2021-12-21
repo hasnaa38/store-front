@@ -2,12 +2,11 @@ const axios = require('axios');
 const URL = 'https://h3-store-app.herokuapp.com';
 
 // Async get products Redux:
-
+/*
 export const get = (category) => dispatch => {
     return axios.get(`${URL}/books`).then(res => {
         let result = res.data.filter(book => book.category === category && book.inventoryCount > 0);
         axios.get(`${URL}/categories`).then(res2 => {
-            console.log(res2.data)
             let result2 = res2.data.filter(item => item.name.toLowerCase() === category);
             dispatch({
                 type: 'GET',
@@ -17,6 +16,28 @@ export const get = (category) => dispatch => {
                 }
             });
         })
+    });
+}
+*/
+
+export const getAll = () => dispatch => {
+    return axios.get(`${URL}/books`).then(res => {
+        axios.get(`${URL}/categories`).then(res2 => {
+            dispatch({
+                type: 'INITIAL_GET',
+                payload: {
+                    categories: res2.data,
+                    result: res.data
+                }
+            });
+        })
+    });
+}
+
+export const get = (category) => dispatch => {
+    dispatch({
+        type: 'GET',
+        payload: category
     });
 }
 
