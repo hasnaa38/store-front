@@ -1,3 +1,22 @@
+const categoriesReducer = (state = {
+    name: '',
+    description: ''
+}, action) => {
+    switch (action.type) {
+        case 'GET':
+            console.log(action.payload)
+            return {
+                displayName: action.payload.category.name,
+                description: action.payload.category.description
+            }
+        default:
+            return state;
+    }
+}
+
+export default categoriesReducer;
+
+/*
 const categoriesReducer = (state = {}, action) => {
     switch (action.type) {
         case 'BUTTON1':
@@ -26,3 +45,4 @@ const categoriesReducer = (state = {}, action) => {
 }
 
 export default categoriesReducer;
+*/

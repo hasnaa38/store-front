@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { openCart, closeCart } from '../redux/actions/index';
+import { openCart, closeCart } from '../store/actions/index';
 import { useSelector, useDispatch } from 'react-redux';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
@@ -36,7 +36,7 @@ function Header() {
     return (
         <div>
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static" sx={{ background: "#212f45" }}>
+                <AppBar position="static" id='appBar' >
                     <Toolbar>
                         <IconButton
                             size="large"
@@ -46,13 +46,13 @@ function Header() {
                             sx={{ mr: 2 }}
                         >
                         </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} id="headerFont" onClick={() => dispatch(closeCart())}>
-                            Books Store
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}  onClick={() => dispatch(closeCart())}>
+                            <strong id="headerFont">Books Store</strong>
                         </Typography>
-                        <IconButton align="right" onClick={() => dispatch(closeCart())}>
+                        <IconButton id="homeIconStyle" onClick={() => dispatch(closeCart())}>
                             <HomeIcon sx={{ color: "#fff" }}/>
                         </IconButton>
-                        <IconButton align="right" onClick={() => dispatch(openCart())} aria-label="cart">
+                        <IconButton id="cartIconStyle" onClick={() => dispatch(openCart())} aria-label="cart">
                             <StyledBadge badgeContent={cart.items.length} color="primary">
                                 <ShoppingCartIcon sx={{ color: "#fff" }}/>
                             </StyledBadge>
@@ -60,7 +60,7 @@ function Header() {
                     </Toolbar>
                 </AppBar>
             </Box>
-            <br /><br /><br />
+            {/* <br /><br /><br /> */}
         </div>
     );
 }

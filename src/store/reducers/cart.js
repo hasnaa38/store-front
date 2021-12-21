@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require('uuid');
 
 const initialState = {
     isOpen: false,
@@ -18,20 +19,19 @@ const cartReducer = (state = initialState, action) => {
                 isOpen: false
             }
         case 'ADD_TO_CART':
-            action.payload['id'] = state.items.length;
-            console.log(action.payload);
+            let newItem = action.payload;
+            newItem['uniqueID'] = uuidv4();       
             return {
                 ...state,
-                items: [...state.items, action.payload],
-                totalPrice: state.totalPrice + Number(action.payload.price)
+                items: [...state.items, newItem],
+                totalPrice: state.totalPrice + Number(newItem.price)
             }
         case 'REMOVE_FROM_CART':
-            console.log(action.payload.id);
-            
+            console.log(action.payload.uniqueID);       
             return {
                 ...state,
-                items: state.items.filter((item) => item.id !== action.payload.id),
-                totalPrice: state.totalPrice - Number(action.payload.price)
+                items: state.items.filter((item) => (item.uniqueID !== action.payload.uniqueID) && (item.inventoryCount !== action.payload.item.inventoryCount)),
+                totalPrice: state.totalPrice - Number(action.payload.item.price)
             }
         default:
             return state;
