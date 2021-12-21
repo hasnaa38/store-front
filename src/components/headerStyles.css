@@ -3,9 +3,33 @@
 #headerFont{
     font-family: 'Imperial Script', cursive;
     font-size: 60px;
+    font-weight: 500;
     cursor: pointer;
+    text-shadow: rgb(26, 26, 26) 3px 2px;
 }
 
 .cancelButton{
     cursor: pointer;
+}
+
+#appBar{
+    background-image: url('https://cdna.artstation.com/p/assets/images/images/006/870/596/large/luis-peres-006-library-f-1500x.jpg?1501857816');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 160px 
+}
+
+#homeIconStyle{
+    position: absolute;
+    bottom: 10px;
+    top: 120px;
+    right: 90px;
+}
+
+#cartIconStyle{
+    position: absolute;
+    bottom: 10px;
+    top: 120px;
+    right: 40px;
 }

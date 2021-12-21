@@ -14,3 +14,10 @@ For this phase, an e-Commerce storefront was created using React with Redux.
 
 For this phase, we have added the “Add to Cart” feature to our application, which will allow our users to not only browse items in the store, but also select them and have them persist in their “shopping cart” for later purchase.
 
+![phase2 uml](https://cdn.discordapp.com/attachments/890617491020189749/922948081211813888/Copy_of_UMLs.png)
+
+## Phase 3
+
+For this phase, we have connected the store to an API to retrieve live data from our own backend server that has a database as a data source. To be able to achieve all asynchronous actions while using Redux, `thunk` was used.
+
+![phase3 process](https://cdn.discordapp.com/attachments/890617491020189749/922950905626771476/Board.png)

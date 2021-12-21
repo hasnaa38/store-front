@@ -1,5 +1,21 @@
-const faker = require('faker');
+const productsReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'GET':
+            return action.payload.result;
+        case 'DECREMENT_STOCK':
+            return state.map(item => {
+                if (item.name === action.payload.name) {
+                    item = action.payload;
+                }
+                return item;
+            });
+        default:
+            return state;
+    }
+}
 
+export default productsReducer;
+/*
 const productsReducer = (state=[], action) => {
     switch (action.type) {
         case 'BUTTON1':
@@ -105,6 +121,4 @@ const productsReducer = (state=[], action) => {
 
 export default productsReducer;
 
-/*
-name, description, price, inventory count
 */
