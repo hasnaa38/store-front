@@ -4,22 +4,26 @@ import Categories from './components/categories';
 import Products from './components/products';
 import SimpleCart from './components/simpleCart';
 import IndividualProduct from './components/individualProduct';
+import CartList from './components/cartList.js';
 import './App.css';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 function App() {
   const cart = useSelector(state => state.cart);
+
   return (
     <div className="App">
       <Router>
         <Header />
-        {!cart.isOpen && <Categories />}
+        {cart.isOpen && <CartList/>}
+        <Categories />
         <Switch>
           <Route exact path='/'>
-            {!cart.isOpen && <Products />}
+            <Products />
           </Route>
           <Route path='/cart'>
-            {cart.isOpen && <SimpleCart />}
+            <SimpleCart />
           </Route>
           <IndividualProduct exact path='/products/:productID' />
         </Switch>

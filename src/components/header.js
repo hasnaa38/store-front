@@ -50,10 +50,10 @@ function Header() {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} >
                             <strong id="headerFont">Books Store</strong>
                         </Typography>
-                        <Link to={'/'}><IconButton id="homeIconStyle" onClick={() => dispatch(closeCart())}>
+                        <Link to={'/'}><IconButton id="homeIconStyle" >
                             <HomeIcon sx={{ color: "#fff" }}/>
                         </IconButton></Link>
-                        <Link to={'/cart'}><IconButton id="cartIconStyle" onClick={() => dispatch(openCart())} aria-label="cart">
+                        <Link to={'/cart'}><IconButton id="cartIconStyle" onMouseOver={() => dispatch(openCart())} aria-label="cart">
                             <StyledBadge badgeContent={cart.items.length} color="primary">
                                 <ShoppingCartIcon sx={{ color: "#fff" }}/>
                             </StyledBadge>

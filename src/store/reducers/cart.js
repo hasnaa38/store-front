@@ -11,7 +11,7 @@ const cartReducer = (state = initialState, action) => {
         case 'OPEN_CART':
             return {
                 ...state,
-                isOpen: !state.isOpen
+                isOpen: true
             }
         case 'CLOSE_CART':
             return {

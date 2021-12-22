@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 function Categories() {
     const categories = useSelector(state => state.categories);
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(getAll());
     }, []);
@@ -22,7 +21,6 @@ function Categories() {
             <br/><br/>
             <h2>{categories.currentCategory?.displayName}</h2>
             <small>{categories.currentCategory?.description}</small>
-           
         </div>
     )
 }
