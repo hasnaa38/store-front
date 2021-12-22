@@ -11,6 +11,7 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import SvgIcon from '@mui/material/SvgIcon';
 import './headerStyles.css';
+import { Link } from "react-router-dom";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -46,17 +47,17 @@ function Header() {
                             sx={{ mr: 2 }}
                         >
                         </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}  onClick={() => dispatch(closeCart())}>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} >
                             <strong id="headerFont">Books Store</strong>
                         </Typography>
-                        <IconButton id="homeIconStyle" onClick={() => dispatch(closeCart())}>
+                        <Link to={'/'}><IconButton id="homeIconStyle" >
                             <HomeIcon sx={{ color: "#fff" }}/>
-                        </IconButton>
-                        <IconButton id="cartIconStyle" onClick={() => dispatch(openCart())} aria-label="cart">
+                        </IconButton></Link>
+                        <Link to={'/cart'}><IconButton id="cartIconStyle" onMouseOver={() => dispatch(openCart())} aria-label="cart">
                             <StyledBadge badgeContent={cart.items.length} color="primary">
                                 <ShoppingCartIcon sx={{ color: "#fff" }}/>
                             </StyledBadge>
-                        </IconButton>
+                        </IconButton></Link>
                     </Toolbar>
                 </AppBar>
             </Box>

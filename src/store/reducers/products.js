@@ -1,6 +1,7 @@
 const productsReducer = (state = {
     allBooks: [],
-    categoryBooks: []
+    categoryBooks: [],
+    currentProduct: {}
 }, action) => {
     switch (action.type) {
         case 'INITIAL_GET':
@@ -21,6 +22,12 @@ const productsReducer = (state = {
                 }
                 return item;
             });
+        case 'CURRENT_PRODUCT':
+            console.log(action)
+            return {
+                ...state,
+                currentProduct: action.payload
+            }
         default:
             return state;
     }

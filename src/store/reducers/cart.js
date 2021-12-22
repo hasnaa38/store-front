@@ -11,7 +11,7 @@ const cartReducer = (state = initialState, action) => {
         case 'OPEN_CART':
             return {
                 ...state,
-                isOpen: !state.isOpen
+                isOpen: true
             }
         case 'CLOSE_CART':
             return {
@@ -20,18 +20,23 @@ const cartReducer = (state = initialState, action) => {
             }
         case 'ADD_TO_CART':
             let newItem = action.payload;
-            newItem['uniqueID'] = uuidv4();       
+            newItem['uniqueID'] = uuidv4();
             return {
                 ...state,
                 items: [...state.items, newItem],
                 totalPrice: state.totalPrice + Number(newItem.price)
             }
         case 'REMOVE_FROM_CART':
-            console.log(action.payload.uniqueID);       
             return {
                 ...state,
                 items: state.items.filter((item) => (item.uniqueID !== action.payload.uniqueID) && (item.inventoryCount !== action.payload.item.inventoryCount)),
                 totalPrice: state.totalPrice - Number(action.payload.item.price)
+            }
+        case 'CHECKOUT':
+            return {
+                ...state,
+                items: [],
+                totalPrice: 0
             }
         default:
             return state;
