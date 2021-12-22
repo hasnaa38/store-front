@@ -88,6 +88,19 @@ export const closeCart = () => {
     }
 }
 
+export const cartCheckout = () => {
+    return {
+        type: 'CHECKOUT'
+    }
+}
+
+export const currentProduct = (item) => {
+    return {
+        type: 'CURRENT_PRODUCT',
+        payload: item
+    }
+}
+
 
 
 // OLD categories actions:

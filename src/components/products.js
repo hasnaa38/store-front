@@ -4,8 +4,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 import Button from '@mui/material/Button';
-import { addToCart, decrementStock } from '../store/actions/index';
+import { addToCart, decrementStock, currentProduct } from '../store/actions/index';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
 
 function Products() {
     const products = useSelector(state => state.products);
@@ -38,7 +39,8 @@ function Products() {
                                     {`${item.price} JD • ${item.inventoryCount} in stock`}
                                 </Typography>
                                 <br/><hr/>
-                                <Button sx={{ background: "#3E242D", borderRadius: '40px' }} variant="contained" size="small" onClick={()=>{dispatch(addToCart(item)); dispatch(decrementStock(item))}}>Add To Cart</Button>
+                                <Button sx={{ background: "#3E242D", borderRadius: '40px' }} variant="contained" size="small" onClick={()=>{dispatch(addToCart(item)); dispatch(decrementStock(item))}}>Add To Cart</Button>{' '}
+                                <Link to={`/products/${item.id}`} style={{'text-decoration':'none'}}><Button sx={{ background: "#3E242D", borderRadius: '40px' }} variant="contained" onClick={()=>dispatch(currentProduct(item))} size="small">More</Button></Link>
                             </Box>
                         ) : (
                             <Box sx={{ pt: 0.5 }}>
